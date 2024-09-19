@@ -4,12 +4,11 @@ import React from 'react';
 type Props = {
     book: Book
     isListView: Boolean
-    index: number
 };
 
-const BookItem: React.FC<Props> = ({isListView, book, index}) => {
+const BookItem: React.FC<Props> = ({isListView, book}) => {
     return (
-        <div key={index} className={`bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition duration-300 ${isListView ? 'flex' : ''}`}>
+        <div className={`bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition duration-300 ${isListView ? 'flex' : ''}`}>
                         <img
                             src={book.imageUrl}
                             alt={book.title}

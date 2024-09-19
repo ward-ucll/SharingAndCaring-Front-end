@@ -7,8 +7,8 @@ import useSWR from 'swr';
 
 const getBooks = async () => {
     const response = await getAllBooks();
-    const books = await response.json()
-    return { books }
+    const data = await response.json()
+    return { data }
 } 
 
 const BooksPage: React.FC = () => {
@@ -22,7 +22,7 @@ const BooksPage: React.FC = () => {
     return (
         <div>
             <Header></Header>
-            {data && !error && ( <BookOverview isListView={isListView} books={data?.books} toggleView={toggleView}></BookOverview>)}
+            {( <BookOverview isListView={isListView} error={error}  books={data?.data.content} toggleView={toggleView}></BookOverview>)}
            
         </div>
     );
