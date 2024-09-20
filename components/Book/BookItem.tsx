@@ -10,7 +10,7 @@ const BookItem: React.FC<Props> = ({isListView, book}) => {
     return (
         <div className={`bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition duration-300 ${isListView ? 'flex' : ''}`}>
                         <img
-                            src={book.imageUrl}
+                            src={book.imageurl}
                             alt={book.title}
                             className={isListView ? 'w-24 h-24 object-cover' : 'w-full h-48 object-cover'}
                         />
@@ -20,5 +20,6 @@ const BookItem: React.FC<Props> = ({isListView, book}) => {
                         </div>
                     </div>
     )
+
 };
 export default BookItem;

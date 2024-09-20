@@ -3,7 +3,7 @@ export type Book = {
     author: string;
     isbn: string;
     language: Language;
-    imageUrl: string;
+    imageurl: string;
 }
 
 export type Language = 
