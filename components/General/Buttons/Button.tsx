@@ -1,16 +1,19 @@
 import React from 'react';
 
 interface ButtonProps {
-    handleButtonClick?: () => void;
+    handleButtonClick: (page: number) => void;
     label: string;
+    page: number;
     children?: React.ReactNode;
+    style: string;
+    addStyle?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ handleButtonClick, label, children }) => {
+const Button: React.FC<ButtonProps> = ({ handleButtonClick, label, page, children, style, addStyle }) => {
     return (
         <button
-            onClick={handleButtonClick}
-            className="bg-blue-500 text-white px-3 py-2 rounded-full hover:bg-blue-600 transition duration-300 shadow-md"
+            onClick={() => handleButtonClick(page)}
+            className={style + " " +  addStyle}
         >
             {label}
             {children}

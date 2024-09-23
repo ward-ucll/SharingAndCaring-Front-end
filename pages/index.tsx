@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
                 <Link href="/books" className="bg-indigo-500 text-white px-6 py-3 rounded-md hover:bg-indigo-600 transition duration-300">
                     View Books
                 </Link>
-                <Link href="/add-book" className="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition duration-300">
+                <Link href="/addBook" className="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition duration-300">
                     Add a Book
                 </Link>
             </div>
