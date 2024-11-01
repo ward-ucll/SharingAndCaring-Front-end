@@ -20,7 +20,7 @@ const Header: React.FC = () => {
                 <div className="relative w-1/3">
                     <input
                         type="text"
-                        placeholder="Zoek iets..."
+                        placeholder="Zoek een boek..."
                         className="w-full px-4 py-2 rounded-lg bg-gray-100 border border-transparent focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition duration-300 shadow-sm"
                     />
                     <svg

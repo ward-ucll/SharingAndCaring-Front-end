@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react";
 import useSWR, { mutate } from "swr";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import LoadingOverlay from "@/components/General/LoadingOverlay";
 
 const BooksPage: React.FC = () => {
   const [isListView, setIsListView] = useState(false);
