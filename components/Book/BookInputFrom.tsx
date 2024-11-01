@@ -27,6 +27,7 @@ const BookInputForm: React.FC<BookInputFormProps> = ({ onClose }) => {
   const [showLanguagesDropdown, setShowLanguagesDropdown] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [submitButtonText, setSubmitButtonText] = useState("Add Book");
+  const [isbn, setIsbn] = useState("");
 
   //error messages for form validation
   const [titleError, setTitleError] = useState("");
@@ -34,6 +35,7 @@ const BookInputForm: React.FC<BookInputFormProps> = ({ onClose }) => {
     const [imageUrlError, setImageUrlError] = useState("");
     const [authorError, setAuthorError] = useState("");
     const [languageError, setLanguageError] = useState("");
+    const [isbnError, setIsbnError] = useState("");
 
 
   // Function to handle input change and filter the language list
@@ -93,6 +95,19 @@ const BookInputForm: React.FC<BookInputFormProps> = ({ onClose }) => {
     {
       setLanguageError("");
     }
+    if (isbn.trim() === "") {
+        setIsbnError("ISBN is required");
+        isValid = false;
+      } else {
+        const isbnRegex = /^(?=(?:[^0-9]*[0-9]){10}(?:(?:[^0-9]*[0-9]){3})?$)[\d-]+$/;
+        if (!isbnRegex.test(isbn)) {
+          setIsbnError("Invalid ISBN format. Please enter a valid 10 or 13-digit ISBN.");
+          isValid = false;
+        } else {
+          setIsbnError("");
+        }
+      }
+    
     return isValid;
     }
 
@@ -193,6 +208,22 @@ const BookInputForm: React.FC<BookInputFormProps> = ({ onClose }) => {
           )}
             <p className="text-red-500 text-sm">{languageError}</p>
         </div>
+
+        {/* ISBN Input */}
+        <div>
+            <label htmlFor="isbn" className="block text-m font-medium">ISBN</label>
+            <input
+                type="text"
+                id="isbn"
+                placeholder="Enter ISBN here"
+                value={isbn}
+                onChange={(e) => setIsbn(e.target.value)}
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            />
+            <p className="text-gray-500 text-sm mt-1">ISBN is a 10 or 13-digit number, usually found on the back cover.</p>
+            <p className="text-red-500 text-sm">{isbnError}</p>
+            </div>
+
 
         {/* Author */}
         <div>
