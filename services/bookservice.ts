@@ -1,4 +1,3 @@
-import { Book } from "@/types";
 
 export const getAllBooks = async (page: string) => {
     return await fetch(process.env.NEXT_PUBLIC_API_URL + "/book/all?page=" + page +"&size=25", {
@@ -10,6 +9,8 @@ export const getAllBooks = async (page: string) => {
 }
 
 export const addBook = async (book: any) => {
+    console.log("Adding book...");
+    console.log(book);
     return await fetch(process.env.NEXT_PUBLIC_API_URL + "/book/add", {
         method: "POST",
         headers: {

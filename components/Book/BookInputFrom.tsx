@@ -1,5 +1,5 @@
+import { addBook } from "@/services/Bookservice";
 import React, { useState } from "react";
-import { addBook } from "@/services/bookservice";
 
 // Enum for languages (mapped to readable format)
 const allLanguages = [
@@ -20,7 +20,7 @@ const BookInputForm: React.FC<BookInputFormProps> = ({ onClose }) => {
   // State for form fields
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageurl, setimageurl] = useState("");
   const [author, setAuthor] = useState("");
   const [language, setLanguage] = useState("");
   const [filteredLanguages, setFilteredLanguages] = useState(allLanguages);
@@ -32,7 +32,7 @@ const BookInputForm: React.FC<BookInputFormProps> = ({ onClose }) => {
   // Error messages for form validation
   const [titleError, setTitleError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
-  const [imageUrlError, setImageUrlError] = useState("");
+  const [imageurlError, setimageurlError] = useState("");
   const [authorError, setAuthorError] = useState("");
   const [languageError, setLanguageError] = useState("");
   const [isbnError, setIsbnError] = useState("");
@@ -71,11 +71,11 @@ const BookInputForm: React.FC<BookInputFormProps> = ({ onClose }) => {
     } else {
       setDescriptionError("");
     }
-    if (imageUrl.trim() === "") {
-      setImageUrlError("Image URL is required");
+    if (imageurl.trim() === "") {
+      setimageurlError("Image URL is required");
       isValid = false;
     } else {
-      setImageUrlError("");
+      setimageurlError("");
     }
     if (author.trim() === "") {
       setAuthorError("Author is required");
@@ -111,9 +111,8 @@ const BookInputForm: React.FC<BookInputFormProps> = ({ onClose }) => {
     if (!validateForm()) {
       return;
     }
-    const response = await addBook({ title, description, imageUrl, author, language });
+    const response = await addBook({ title, description, imageurl, author, language, isbn });
     const data = await response.json();
-    setSubmitButtonText("Saving...");
     if (!response.ok) {
       setErrorMessage(data.message);
       return;
@@ -154,21 +153,21 @@ const BookInputForm: React.FC<BookInputFormProps> = ({ onClose }) => {
 
           {/* Image URL */}
           <div>
-            <label htmlFor="imageUrl" className="block text-m font-medium">Image URL</label>
+            <label htmlFor="imageurl" className="block text-m font-medium">Image URL</label>
             <input
               type="text"
-              id="imageUrl"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
+              id="imageurl"
+              value={imageurl}
+              onChange={(e) => setimageurl(e.target.value)}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
             />
-            <p className="text-red-500 text-sm">{imageUrlError}</p>
+            <p className="text-red-500 text-sm">{imageurlError}</p>
           </div>
 
-          {imageUrl && (
+          {imageurl && (
             <div className="flex justify-center mt-4">
               <img
-                src={imageUrl}
+                src={imageurl}
                 alt="Book cover preview"
                 className="max-h-48 rounded-md shadow-md"
               />
@@ -210,6 +209,18 @@ const BookInputForm: React.FC<BookInputFormProps> = ({ onClose }) => {
               id="isbn"
               value={isbn}
               onChange={(e) => setIsbn(e.target.value)}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            />
+            <p className="text-red-500 text-sm">{isbnError}</p>
+          </div>
+          {/* Author Input */}
+          <div>
+            <label htmlFor="isbn" className="block text-m font-medium">Author</label>
+            <input
+              type="text"
+              id="isbn"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
             />
             <p className="text-red-500 text-sm">{isbnError}</p>

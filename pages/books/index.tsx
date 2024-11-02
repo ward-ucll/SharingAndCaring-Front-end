@@ -2,7 +2,7 @@ import BookItem from "@/components/Book/BookItem";
 import BookOverview from "@/components/Book/BookOverview";
 import Button from "@/components/General/Buttons/Button";
 import Header from "@/components/Header/Header";
-import { getAllBooks } from "@/services/bookservice";
+import { getAllBooks } from "@/services/Bookservice";
 import React, { useEffect, useState } from "react";
 import useSWR, { mutate } from "swr";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
