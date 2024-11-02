@@ -22,7 +22,6 @@ const searchText: React.FC = () => {
       }
     );
     const data = await response.json();
-    console.log(data);
     return { data };
   };
 
@@ -48,11 +47,12 @@ const searchText: React.FC = () => {
           </button>
         </div>
         <div>
+            
           <BookOverview
-            isListView={true}
+            isListView={isListView}
             error={error}
             books={data?.data.content}
-            toggleView={() => toggleView()}
+            toggleView={toggleView}
           ></BookOverview>
         </div>
       </div>
